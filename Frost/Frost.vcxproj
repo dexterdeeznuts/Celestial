@@ -153,13 +153,16 @@
     <ClInclude Include="Base\Hooks\Input\KeymapHook.h" />
     <ClInclude Include="Base\Hooks\Render\RenderContextHook.h" />
     <ClInclude Include="Base\SDK\Core\Font.h" />
+    <ClInclude Include="Base\SDK\Render\CaretMeasureData.h" />
     <ClInclude Include="Base\SDK\Render\MinecraftUIRenderContext.h" />
+    <ClInclude Include="Base\SDK\Render\TextMeasureData.h" />
     <ClInclude Include="Base\Utils\Maths\TextFormat.h" />
     <ClInclude Include="Base\Utils\Maths\TextHolder.h" />
     <ClInclude Include="Base\Utils\Maths\UIColor.h" />
     <ClInclude Include="Base\Utils\Maths\Vector2.h" />
     <ClInclude Include="Base\Utils\Maths\Vector3.h" />
     <ClInclude Include="Base\Utils\Maths\Vector4.h" />
+    <ClInclude Include="Base\Utils\RenderUtils.h" />
     <ClInclude Include="Base\Utils\Utils.h" />
     <ClInclude Include="Libs\minhook\buffer.h" />
     <ClInclude Include="Libs\minhook\hde\hde32.h" />

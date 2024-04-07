@@ -2,8 +2,9 @@
 
 class ComponentRenderBatch;
 class HashedString;
-class TextMeasureData;
-class CaretMeasureData;
+
+#include "TextMeasureData.h"
+#include "CaretMeasureData.h"
 
 class TexturePtr // TextureData's class
 {
@@ -35,13 +36,13 @@ public:
 private:
     virtual void Destructor();
 public:
-    virtual float getLineLength(void* font, TextHolder* str, float measureCalculation, bool calculateWidth);
+    virtual float getLineLength(FontRepos* font, TextHolder* str, float measureCalculation, bool calculateWidth);
 private:
     virtual int getTextAlpha();
     virtual void setTextAlpha();
     virtual void drawDebugText();
 public:
-    virtual void drawText(void* font, Vector4<float> const& pos, TextHolder* str, UIColor const& colour, float, float alinM, TextMeasureData const& textdata, CaretMeasureData const& caretdata);
+    virtual void drawText(FontRepos* font, const float* pos, TextHolder* str, const float* colour, float, float alinM, const TextMeasureData* textMeasureData, const CaretMeasureData* caretMeasureData);
     virtual void flushText(float flushDelta);
 public:
     virtual void drawImage(TexturePtr*, Vector2<float>* ImagePos, Vector2<float>* ImageDimension, Vector2<float> const& uvPos, Vector2<float> const& uvSize);

@@ -101,5 +101,14 @@
     <ClInclude Include="Base\SDK\Core\Font.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Base\Utils\RenderUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\SDK\Render\TextMeasureData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\SDK\Render\CaretMeasureData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

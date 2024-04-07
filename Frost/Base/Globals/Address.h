@@ -1,7 +1,9 @@
 #pragma once
 
 namespace Address {
+	static MinecraftUIRenderContext* renderContext = nullptr; // RenderContext
 	static FontRepos* Font = nullptr; // Font Repos
 
-	static void getFont() { Font; }
+	static MinecraftUIRenderContext* getRenderContext() { return renderContext; }
+	static FontRepos* getFont() { return Font; }
 }

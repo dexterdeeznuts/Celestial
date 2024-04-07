@@ -43,6 +43,18 @@ void onDrawImageDetour(MinecraftUIRenderContext* ctx, TexturePtr* path, Vector2<
         // Call the fillRectangle function on ctx, passing in rectPos and color as arguments
         ctx->fillRectangle(rectPos, color, color.a);
 
+        if (Address::getFont() == nullptr)
+            return;
+
+        std::string str("Frost");
+
+        float strSize = 6;
+        float width = RenderUtils::getTextWidth(&str, strSize) / 2;
+
+        Vector2<float> titlePos = Vector2<float>((ImagePos.x + (a3.x / 2)) - width, ImagePos.y);
+
+        RenderUtils::drawText(titlePos, &str, UIColor(255, 255, 255), strSize, 1, true);
+
         // Hide the minecraft title.
         return;
     }
@@ -79,6 +91,9 @@ void renderDetourHook(void* __this, MinecraftUIRenderContext* ctx) { // ScreenCo
     Utils::CallFunc<void*, void*, MinecraftUIRenderContext*>(
         onRender, __this, ctx
     );
+
+    // Initialize RenderContext for Address
+    Address::renderContext = ctx; // set CTX
 
     // MinecraftUIRenderContext VTable
     auto vtable = *(uintptr_t**)ctx;

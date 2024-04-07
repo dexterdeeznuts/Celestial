@@ -19,6 +19,8 @@ bool isRunning = true; // isRunning bool for ejection/detachment
 #include "Base/Globals/Global.h"
 #include "Base/Utils/Utils.h"
 
+class MinecraftUIRenderContext;
+
 // Maths
 #include "Base/Utils/Maths/TextFormat.h"
 #include "Base/Utils/Maths/TextHolder.h"
@@ -32,6 +34,9 @@ bool isRunning = true; // isRunning bool for ejection/detachment
 
 // Address
 #include "Base/Globals/Address.h"
+
+// RenderUtil
+#include "Base/Utils/RenderUtils.h" // This must be under SDK to avoid errors
 
 // Hooks
 #include "Base/Hooks/FuncHook.h"
