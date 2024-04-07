@@ -164,6 +164,15 @@
     <ClInclude Include="Base\Utils\Maths\Vector4.h" />
     <ClInclude Include="Base\Utils\RenderUtils.h" />
     <ClInclude Include="Base\Utils\Utils.h" />
+    <ClInclude Include="Client\Events\Event.h" />
+    <ClInclude Include="Client\Events\Events\ImGuiRenderEvent.h" />
+    <ClInclude Include="Client\Events\Events\KeyboardEvent.h" />
+    <ClInclude Include="Client\Events\Events\MouseEvent.h" />
+    <ClInclude Include="Client\Events\Events\MouseScrollEvent.h" />
+    <ClInclude Include="Client\Events\Events\RenderContextEvent.h" />
+    <ClInclude Include="Client\Modules\Module.h" />
+    <ClInclude Include="Client\Modules\ModuleAssistant.h" />
+    <ClInclude Include="Client\Modules\Settings.h" />
     <ClInclude Include="Libs\minhook\buffer.h" />
     <ClInclude Include="Libs\minhook\hde\hde32.h" />
     <ClInclude Include="Libs\minhook\hde\hde64.h" />

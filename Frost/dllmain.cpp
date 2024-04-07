@@ -9,8 +9,16 @@ bool isRunning = true; // isRunning bool for ejection/detachment
 #include <Psapi.h>
 #include <iostream>
 #include <sstream>
+#include <chrono>
+#include <unordered_map>
+#include <vector>
 #include <string>
 #include <map>
+
+// Module List
+class Module;
+std::vector<Module*> modules = std::vector<Module*>();
+std::vector<std::string> categories;
 
 // MinHook
 #include "Libs/minhook/MinHook.h"
@@ -38,8 +46,17 @@ class MinecraftUIRenderContext;
 // RenderUtil
 #include "Base/Utils/RenderUtils.h" // This must be under SDK to avoid errors
 
+// Event
+#include "Client/Events/Event.h"
+
+// Module
+#include "Client/Modules/Module.h"
+
 // Hooks
 #include "Base/Hooks/FuncHook.h"
+
+// ModuleAssistant
+#include "Client/Modules/ModuleAssistant.h"
 
 #pragma endregion
 

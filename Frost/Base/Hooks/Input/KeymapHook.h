@@ -8,14 +8,21 @@ void KeymapDetourHook(__int32 key, bool held) // Checks what key has been presse
 	// Set the value of Global::keymap[key] equal to held.
 	Global::Keymap[key] = held;
 
+	bool cancelled = false;
+
+	KeyboardEvent event{ &key, &held }; // KeymapEvent
+	event.cancelled = &cancelled;
+	CallBackEvent(&event); // Call Keymap event for modules to be writen on this hook.
+
 	// Log the string "Key " concatenated with the value of key, a space, the string " ", and the value of held, followed by a newline character.
 	// Debug code that you can remove.
 	log(Utils::combine("Key", key, " ", held, "\n").c_str());
 
-	// Inside our functiion we're calling the original code that was there/the original function we hooked so the games behavior doesn't change.
-	Utils::CallFunc<void*, __int32, bool>( // CallFunc to call the original.
-		onSendKey, key, held
-	);
+	if (!cancelled) {
+		// Inside our functiion we're calling the original code that was there/the original function we hooked so the games behavior doesn't change.
+		Utils::CallFunc<void*, __int32, bool>( // CallFunc to call the original.
+			onSendKey, key, held);
+	}
 }
 
 class KeymapHook : public FuncHook { // a Keymap class that inherits the FuncHook template we made

@@ -89,11 +89,14 @@ void onDrawNineSliceDetour(MinecraftUIRenderContext* _this, TexturePtr* textureP
 void renderDetourHook(void* __this, MinecraftUIRenderContext* ctx) { // ScreenContext, MinecraftUIRenderContext
     // Call the function at the address stored in onRender, passing in __this and ctx as arguments
     Utils::CallFunc<void*, void*, MinecraftUIRenderContext*>(
-        onRender, __this, ctx
-    );
+        onRender, __this, ctx);
 
     // Initialize RenderContext for Address
     Address::renderContext = ctx; // set CTX
+
+    RenderContextEvent event{}; // RenderContextEvent
+    event.cancelled = nullptr;
+    CallBackEvent(&event); // Call RenderContext event for modules to be writen on this hook.
 
     // MinecraftUIRenderContext VTable
     auto vtable = *(uintptr_t**)ctx;

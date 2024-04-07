@@ -26,6 +26,24 @@ struct Vector4 {
 		this->w = position.y + size.y;
 	};
 
+	__forceinline Vector4<T> scaleToCenter(float scaleFactor) {
+		float centerX = (this->x + this->z) / 2.0f;
+		float centerY = (this->y + this->w) / 2.0f;
+
+		float width = this->getWidth();
+		float height = this->getHeight();
+
+		float scaledWidth = width * scaleFactor;
+		float scaledHeight = height * scaleFactor;
+
+		float newX = centerX - scaledWidth / 2.0f;
+		float newY = centerY - scaledHeight / 2.0f;
+		float newZ = newX + scaledWidth;
+		float newW = newY + scaledHeight;
+
+		return Vector4<T>(newX, newY, newZ, newW);
+	}
+
 	// overload == operator to allow for comparison between two Vector4 objects
 	bool operator == (Vector4 v) { return v.x == x && v.y == y && v.z == z && v.w == w; };
 
