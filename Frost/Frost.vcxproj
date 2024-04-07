@@ -150,6 +150,8 @@
     <ClInclude Include="Base\Globals\Global.h" />
     <ClInclude Include="Base\Hooks\FuncHook.h" />
     <ClInclude Include="Base\Hooks\Input\KeymapHook.h" />
+    <ClInclude Include="Base\Hooks\Render\RenderContextHook.h" />
+    <ClInclude Include="Base\SDK\Render\MinecraftUIRenderContext.h" />
     <ClInclude Include="Base\Utils\Maths\TextFormat.h" />
     <ClInclude Include="Base\Utils\Maths\TextHolder.h" />
     <ClInclude Include="Base\Utils\Maths\UIColor.h" />
