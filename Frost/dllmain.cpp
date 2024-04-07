@@ -4,15 +4,23 @@
 
 // C++ Includes
 #include <Windows.h>
+#include <Psapi.h>
+#include <iostream>
 
 // MinHook
 #include "Libs/minhook/MinHook.h"
+
+// Utils
+#include "Base/Globals/Global.h"
+
+// Hooks
+#include "Base/Hooks/FuncHook.h"
 
 #pragma endregion
 
 // This function initializes the client.
 void InitializeClient() { // A method called "InitializeClient" to initialize hooks/modules etc.
-
+    InitializeHooks(); // This is used to initialize hooks to the proccess.
 }
 
 BOOL APIENTRY DllMain(HMODULE module, DWORD  reason, LPVOID reserved)
