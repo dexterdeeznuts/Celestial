@@ -6,13 +6,9 @@
 
 BOOL APIENTRY DllMain(HMODULE module, DWORD  reason, LPVOID reserved)
 {
-    switch (reason)
-    {
-    case DLL_PROCESS_ATTACH:
-    case DLL_THREAD_ATTACH:
-    case DLL_THREAD_DETACH:
-    case DLL_PROCESS_DETACH:
-        break;
+    if (reason == DLL_PROCESS_ATTACH) {
+        // Prevent the DLL from being unloaded when the DLL is first attached to the process
+        DisableThreadLibraryCalls(module); // Give it the module of the dll.
     }
     return TRUE;
 }
