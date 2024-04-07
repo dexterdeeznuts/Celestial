@@ -30,8 +30,8 @@ public:
 	//
 	bool Initialize() override // Now override the Initialize function so we can actually hook our stuff
 	{
+		// Find the address of the function specified by the signature {SIG} and store it in a void pointer called keymapAddr
 		// Using the utils class findSig function to locate the address of the signature
-		// Find the address of the function specified by the signature "48 83 EC ? ? ? C1 4C 8D 05" and store it in a void pointer called keymapAddr
 		
 		// Key::feed
 		void* KeymapAddr = Utils::findSig("48 83 EC ? ? ? C1 4C 8D 05");

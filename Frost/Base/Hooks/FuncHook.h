@@ -12,9 +12,11 @@ public:
 
 // Input
 #include "Input/KeymapHook.h"
+#include "Input/MouseHook.h"
 
 // Render
 #include "Render/RenderContextHook.h"
+#include "../DirectX/DirectXHook.h"
 
 #pragma endregion
 
@@ -23,8 +25,10 @@ public:
 void InitializeHooks() {
 	// This is an array of pointers to function hook objects
 	static FuncHook* hooks[] = { // When you define a static in a method the variable will be created once you call the function but won't be modified if you call it again as its already been created
-		&KeymapHook::Instance(),
 		&RenderContextHook::Instance(),
+		&DirectXHook::Instance(),
+		&KeymapHook::Instance(),
+		&MouseHook::Instance(),
 	};
 
 	for (std::size_t i = 0; i < std::size(hooks); ++i) { // This will allow us to loop through our hooks.

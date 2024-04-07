@@ -166,4 +166,29 @@ namespace Utils {
         }
     }
 #pragma endregion
+
+#pragma region Utils
+
+    static bool leftClick, leftDown, rightClick, rightDown, middleClick, middleDown;
+
+    static void onMouseClick(int key, bool isDown)
+    {
+        switch (key)
+        {
+        case 1:
+            leftClick = isDown;
+            leftDown = isDown ? true : leftDown;
+            break;
+        case 2:
+            rightClick = isDown;
+            rightDown = isDown ? true : rightDown;
+            break;
+        case 3:
+            middleClick = isDown;
+            middleDown = isDown ? true : middleDown;
+            break;
+        }
+    }
+
+#pragma endregion
 }
