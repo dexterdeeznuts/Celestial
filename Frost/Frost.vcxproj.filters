@@ -68,5 +68,8 @@
     <ClInclude Include="Base\Utils\Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Base\Hooks\Input\KeymapHook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

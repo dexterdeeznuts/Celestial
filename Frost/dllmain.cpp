@@ -6,6 +6,8 @@
 #include <Windows.h>
 #include <Psapi.h>
 #include <iostream>
+#include <sstream>
+#include <map>
 
 // MinHook
 #include "Libs/minhook/MinHook.h"
