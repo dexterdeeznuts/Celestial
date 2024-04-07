@@ -7,6 +7,7 @@
 #include <Psapi.h>
 #include <iostream>
 #include <sstream>
+#include <string>
 #include <map>
 
 // MinHook
@@ -15,6 +16,14 @@
 // Utils
 #include "Base/Globals/Global.h"
 #include "Base/Utils/Utils.h"
+
+// Maths
+#include "Base/Utils/Maths/TextFormat.h"
+#include "Base/Utils/Maths/TextHolder.h"
+#include "Base/Utils/Maths/UIColor.h"
+#include "Base/Utils/Maths/Vector2.h"
+#include "Base/Utils/Maths/Vector3.h"
+#include "Base/Utils/Maths/Vector4.h"
 
 // Hooks
 #include "Base/Hooks/FuncHook.h"
