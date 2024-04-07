@@ -12,6 +12,7 @@
 
 // Utils
 #include "Base/Globals/Global.h"
+#include "Base/Utils/Utils.h"
 
 // Hooks
 #include "Base/Hooks/FuncHook.h"

@@ -65,5 +65,8 @@
     <ClInclude Include="Base\Globals\Global.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Base\Utils\Utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
