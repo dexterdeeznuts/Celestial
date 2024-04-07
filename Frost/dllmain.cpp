@@ -1,5 +1,7 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
 
+bool isRunning = true; // isRunning bool for ejection/detachment
+
 #pragma region Includes
 
 // C++ Includes
@@ -35,6 +37,23 @@ void InitializeClient() { // A method called "InitializeClient" to initialize ho
     InitializeHooks(); // This is used to initialize hooks to the proccess.
 }
 
+DWORD APIENTRY ejectThread(HMODULE lpParam)
+{
+    while (isRunning) { // When the client is running.
+        // When Control and L pressed.
+        if ((Global::Keymap[VK_CONTROL] && Global::Keymap['L'])) {
+            // set bool isRunning to false. for ejection.
+            isRunning = false;  // Uninject
+        }
+        Sleep(0); // I use this to avoid little decreasing in fps.
+    }
+
+    Sleep(50); // Sleep for a little bit.
+    MH_DisableHook(MH_ALL_HOOKS); // Disable all Hooks.
+    MH_RemoveHook(MH_ALL_HOOKS); // Remove all Hooks.
+    FreeLibraryAndExitThread(lpParam, 1); // Uninject the client completly.
+}
+
 BOOL APIENTRY DllMain(HMODULE module, DWORD  reason, LPVOID reserved)
 {
     if (reason == DLL_PROCESS_ATTACH) {
@@ -43,6 +62,9 @@ BOOL APIENTRY DllMain(HMODULE module, DWORD  reason, LPVOID reserved)
 
         // Create a new thread to initialize the client on using the CreatThread function C++ provides
         CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)InitializeClient, module, 0, nullptr);
+
+        // Create a new thread for ejection using the CreatThread function C++ provides
+        CreateThread(0, 0, (LPTHREAD_START_ROUTINE)ejectThread, module, 0, 0);
     }
     return TRUE;
 }
