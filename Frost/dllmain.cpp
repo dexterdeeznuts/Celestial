@@ -27,6 +27,12 @@ bool isRunning = true; // isRunning bool for ejection/detachment
 #include "Base/Utils/Maths/Vector3.h"
 #include "Base/Utils/Maths/Vector4.h"
 
+// SDK (Software Development Kit)
+#include "Base/SDK/Core/Font.h"
+
+// Address
+#include "Base/Globals/Address.h"
+
 // Hooks
 #include "Base/Hooks/FuncHook.h"
 

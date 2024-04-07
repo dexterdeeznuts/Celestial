@@ -6,6 +6,8 @@
 // Declare a void pointer(Empty object) called onRender which is the CallBack for renderDetourHook.
 void* onRender; // Defined an orignal for RenderDetour.
 
+// Declare a void pointer(Empty object) called onDrawText which is the CallBack for onDrawTextDetour.
+__int64* onDrawText; // Defined an orignal for onDrawTextDetour.
 // Declare a void pointer(Empty object) called onDrawImage which is the CallBack for onDrawImageDetour.
 __int64* onDrawImage; // Defined an orignal for onDrawImageDetour.
 // Declare a void pointer(Empty object) called onDrawNineSlice which is the CallBack for onDrawNineSliceHook.
@@ -14,6 +16,18 @@ __int64* onDrawNineSlice; // Defined an orignal for onDrawNineSliceHook.
 // Declare a variable called layerCounter and initialize it to 0
 int layerCounter = 0; // Defined an orignal for RenderDetour.
 
+#pragma region onDrawText
+
+// MinecraftUIRenderContext, FontRepos, TextPos, TextHolder, UIColor, Alpha, AlinM, TextMeasureData, CaretMeasureData
+void onDrawTextDetour(MinecraftUIRenderContext* _this, FontRepos* font, Vector4<float> const& pos, TextHolder* str, UIColor const& colour, float alpha, float alinM, TextMeasureData const& textdata, CaretMeasureData const& caretdata) {
+    Address::Font = font;
+
+    // Inside our functiion we're calling the original code that was there/the original function we hooked so the games behavior doesn't change.
+    Utils::CallFunc<void, MinecraftUIRenderContext*, FontRepos*, Vector4<float> const&, TextHolder*, UIColor const&, float, float, TextMeasureData const&, CaretMeasureData const&>(
+        onDrawText, _this, font, pos, str, colour, alpha, alinM, textdata, caretdata);
+}
+
+#pragma endregion
 #pragma region onDrawImage
 
 // MinecraftUIRenderContext, TexturePtr, ImagePos, ImageDimesnion, UvPos, UvSize
@@ -39,7 +53,6 @@ void onDrawImageDetour(MinecraftUIRenderContext* ctx, TexturePtr* path, Vector2<
 }
 
 #pragma endregion
-
 #pragma region onDrawNineSlice
 
 // MinecraftUIRenderContext, TexturePtr, nineSliceInfo
@@ -70,8 +83,14 @@ void renderDetourHook(void* __this, MinecraftUIRenderContext* ctx) { // ScreenCo
     // MinecraftUIRenderContext VTable
     auto vtable = *(uintptr_t**)ctx;
     // Make a bool for tryDrawImage
+    static bool tryHookDrawText = false;
     static bool tryHookDrawImage = false;
     static bool tryHookDrawNineSlice = false;
+
+    if (!tryHookDrawText) {
+        // Hook drawText from MinecraftUIRenderContext's VTable
+        tryHookDrawText = Utils::HookFunction((void*)vtable[5], (void*)&onDrawTextDetour, &onDrawText, "DrawText");
+    }
 
     if (!tryHookDrawImage) {
         // Hook drawImage from MinecraftUIRenderContext's VTable

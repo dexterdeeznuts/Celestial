@@ -95,5 +95,11 @@
     <ClInclude Include="Base\Hooks\Render\RenderContextHook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Base\Globals\Address.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\SDK\Core\Font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
