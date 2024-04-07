@@ -5,6 +5,9 @@
 // C++ Includes
 #include <Windows.h>
 
+// MinHook
+#include "Libs/minhook/MinHook.h"
+
 #pragma endregion
 
 // This function initializes the client.
